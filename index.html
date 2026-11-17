@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#fff0f8">
+<meta name="description" content="A tiny heart-note app, made with an enormous amount of love.">
+<title>Heart Notes ♥ Just for You</title>
+<style>
+:root{--ink:#3d233e;--muted:#755e78;--rose:#ed76af;--plum:#4c2656;--cream:#fff8fb;--line:#f2dce8;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:ui-rounded,'Trebuchet MS',system-ui,-apple-system,'Segoe UI',sans-serif;background:radial-gradient(ellipse at 5% 6%,#ffe1ef 0,transparent 33%),radial-gradient(ellipse at 95% 25%,#e9d9ff 0,transparent 37%),linear-gradient(180deg,#fff9fc,#fff1f8 65%,#fff9fc);overflow-x:hidden}
+a{color:inherit}button{font:inherit}::selection{background:#ffc0db}
+.container{width:min(1050px,calc(100% - 42px));margin:auto}
+nav{display:flex;align-items:center;justify-content:space-between;padding:27px 0 10px;position:relative;z-index:2}
+.brand{display:flex;gap:11px;align-items:center;font-weight:900;font-size:20px;letter-spacing:-.7px}.brand-mark{height:38px;width:38px;border-radius:13px;display:grid;place-items:center;background:#f5add1;color:#873466;font-size:25px;box-shadow:0 8px 24px #ed82b15c}.mini-label{font-size:12px;font-weight:900;color:#a45385;background:#fff;border:1px solid #f2d7e4;border-radius:99px;padding:10px 14px}
+.hero{position:relative;text-align:center;padding:64px 0 44px}.tag{display:inline-flex;gap:9px;align-items:center;background:#fff9fc;border:1px solid #f1d2e2;box-shadow:0 8px 28px #b85a9620;border-radius:99px;padding:10px 18px;color:#a14a79;font-size:13px;font-weight:900}
+h1{max-width:790px;margin:25px auto 20px;font-weight:900;font-size:clamp(45px,7.7vw,85px);line-height:1.07;letter-spacing:-3.5px}
+h1 em{font-style:normal;background:linear-gradient(110deg,#d954a2,#a77be1 72%,#ed78a5);background-clip:text;color:transparent}
+.lead{color:#755b76;max-width:610px;margin:0 auto;font-size:clamp(16px,2.1vw,20px);line-height:1.75}
+.hero-heart{font-size:38px;display:inline-block;animation:heartbeat 2.3s ease-in-out infinite;transform-origin:center}
+@keyframes heartbeat{0%,40%,70%,100%{transform:scale(1)}15%,60%{transform:scale(1.18)}}
+.download-box{max-width:660px;margin:34px auto 0;background:#fff;border:1px solid #f3dce9;border-radius:31px;box-shadow:0 16px 55px #ad6d9c20;padding:30px}
+.download-title{margin:0;font-size:23px;font-weight:900}.download-sub{color:var(--muted);font-size:14px;line-height:1.7;margin:9px auto 20px;max-width:460px}
+.primary{display:inline-flex;justify-content:center;align-items:center;gap:14px;min-height:62px;padding:17px 29px;border:0;border-radius:18px;background:linear-gradient(110deg,#ec78b5,#b980ed);color:#321d40;font-size:18px;font-weight:900;text-decoration:none;box-shadow:0 12px 25px #d77ab962;transition:transform .2s,box-shadow .2s}
+.primary:hover{transform:translateY(-3px);box-shadow:0 18px 30px #d77ab96b}.primary:active{transform:translateY(1px)}
+.safe{font-size:12px;color:#957991;margin-top:16px;line-height:1.6}
+.section{padding:58px 0}.section h2{text-align:center;font-size:clamp(29px,4vw,42px);letter-spacing:-1.5px;margin:0 0 13px}.section-intro{text-align:center;color:var(--muted);font-size:16px;margin:0 auto 33px;max-width:590px;line-height:1.7}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:#fffdfa;border:1px solid var(--line);border-radius:25px;padding:28px;box-shadow:0 10px 30px #af68800f;min-height:214px}
+.step-icon{display:grid;place-items:center;background:#fff0f8;color:#b85c93;width:52px;height:52px;border-radius:17px;font-size:26px;margin-bottom:18px}
+.step strong{display:block;font-size:19px;margin-bottom:8px}.step p{color:var(--muted);font-size:14px;line-height:1.7;margin:0}
+.letter{margin:52px auto 0;position:relative;max-width:780px;background:#fffafc;border:2px dashed #e6accd;border-radius:30px;padding:47px 48px 41px;box-shadow:0 16px 40px #a86b9418;transform:rotate(-1deg)}
+.letter::before{content:'💌';position:absolute;top:-33px;left:50%;transform:translateX(-50%) rotate(6deg);font-size:47px}
+.letter h2{font-size:30px;margin:0 0 17px;letter-spacing:-1px}.letter p{font-size:19px;line-height:1.85;color:#624661;margin:0}.signature{margin-top:24px!important;font-weight:900;color:#b44d86!important}
+.special{text-align:center;padding:20px 0 5px}
+.heart-button{cursor:pointer;border:1px solid #efc7dc;border-radius:99px;padding:13px 22px;background:#fff;color:#a44b83;font-weight:900;box-shadow:0 5px 17px #d68fba2b;transition:transform .2s}.heart-button:hover{transform:scale(1.06)}
+.privacy{margin:25px auto 65px;max-width:800px;display:flex;align-items:center;gap:18px;background:#f5e7f4;border-radius:18px;padding:18px 22px;color:#674967;font-size:13px;line-height:1.7}
+.privacy strong{color:#57345a}.privacy span{font-size:26px}
+footer{padding:27px 0 45px;border-top:1px solid #f2dbe7;text-align:center;color:#967690;font-size:13px;line-height:1.9}
+.float-heart{position:fixed;z-index:0;pointer-events:none;color:#e990bd;opacity:.35;animation:floatUp linear forwards;user-select:none}
+@keyframes floatUp{0%{transform:translateY(0) rotate(-8deg) scale(.7);opacity:0}12%{opacity:.5}80%{opacity:.35}100%{transform:translateY(-115vh) rotate(20deg) scale(1.3);opacity:0}}
+.spark{position:fixed;pointer-events:none;z-index:20;animation:explode 1.8s ease-out forwards;font-size:22px}
+@keyframes explode{0%{opacity:1;transform:translate(0,0) scale(.8)}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.5)}}
+@media(max-width:650px){.hero{padding-top:45px}h1{letter-spacing:-2px}.steps{grid-template-columns:1fr}.step{min-height:unset;padding:23px}.letter{padding:44px 23px 27px;transform:none}.letter p{font-size:16px}.download-box{padding:24px 17px}.primary{width:100%;font-size:16px}.privacy{margin-bottom:42px}.mini-label{font-size:10px}.hero-heart{font-size:30px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="container">
+<nav><div class="brand"><div class="brand-mark">♥</div><span>Heart Notes</span></div><span class="mini-label">100% handmade with love ♡</span></nav>
+<main>
+<section class="hero" aria-labelledby="headline">
+<div class="tag">💗 A tiny gift for my absolute favorite human</div>
+<h1 id="headline">For the girl who has <em>my whole heart.</em> <span class="hero-heart">💗</span></h1>
+<p class="lead">Because the love of my life deserves a little less to worry about, one less thing to remember, and approximately <em>one billion</em> extra hearts on a webpage.</p>
+<div class="download-box">
+<p class="download-title">Your tiny pocket helper is ready! 🎀</p>
+<p class="download-sub">A gentle little Android app for saving the moment you notice a symptom, so you can get right back to your day.</p>
+<a class="primary" href="./HeartNotes-v1.0.apk" download="HeartNotes-v1.0.apk" id="download">♥ &nbsp; Download Your App &nbsp; ⤓</a>
+<div class="safe">Android APK · No account · Offline · Your notes stay on your phone<br>You'll need to allow installation from your browser once.<br>Then long-press the Android home screen → Widgets → Heart Notes → Add.</div>
+</div>
+</section>
+<section class="section" aria-labelledby="works"><h2 id="works">Small taps. Big love. 💕</h2><p class="section-intro">I made it as simple as possible, because you're busy being wonderful.</p>
+<div class="steps">
+<article class="step"><span class="step-icon">☝️</span><strong>Tap “Log Event”</strong><p>One tap on the home-screen widget saves the date and time right away. You don't have to remember it later.</p></article>
+<article class="step"><span class="step-icon">💗</span><strong>Pick what you felt</strong><p>A small popup lets you select symptoms and add a quick note. Or skip it if life is happening. The timestamp stays saved.</p></article>
+<article class="step"><span class="step-icon">📋</span><strong>See your history</strong><p>Everything stays organized on your phone. When you're ready, save a PDF or CSV for your doctor.</p></article>
+</div>
+<div class="letter"><h2>A very important love note ✨</h2><p>If I could, I'd take every little worry off your shoulders and put it on mine. But since I can't do that, I made you something to make your days a tiny bit easier. Take care of that beautiful heart of yours, okay? It's my favorite one in the whole universe.</p><p class="signature">Forever your biggest fan, your nerd, and your very cheesy husband. ♥</p></div>
+<div class="special"><button class="heart-button" type="button" id="more-hearts">Click here for more love (yes, seriously) 💘</button><p id="love-message" style="color:#a56b94;min-height:22px" aria-live="polite"></p></div>
+</section>
+<div class="privacy"><span>🔒</span><div><strong>Your heart notes are yours.</strong> This website only gives you the installer. The Android app doesn't request internet access, and its records stay on your phone unless you choose to export or share them. If you uninstall it, your local entries can be erased, so export a backup before doing that.</div></div>
+</main>
+<footer>P.S. Yes, I made an entire website just to tell you I love you. I'd do it again. 💕<br>Heart Notes · v1.0 · A little love letter disguised as software.</footer>
+</div>
+<script>
+(() => {
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduced){let n=0;setInterval(()=>{if(document.hidden||n>8)return;const h=document.createElement('span');h.className='float-heart';h.textContent=['♥','♡','❤','✿'][Math.floor(Math.random()*4)];h.style.cssText='left:'+Math.random()*100+'vw;top:100vh;font-size:'+(13+Math.random()*22)+'px;animation-duration:'+(11+Math.random()*9)+'s';document.body.append(h);n++;setTimeout(()=>{h.remove();n--},21000)},1700)}
+const messages=['I love you to the moon and back. And then some. 🌙','You are literally my favorite notification. 💌','If hugs were code, this page would be a million lines long. 🥹','My favorite beat will always be the one that brought me to you. 💞','I would choose you in every single universe. ✨'];
+let clicked=0;
+document.getElementById('more-hearts').addEventListener('click',(e)=>{document.getElementById('love-message').textContent=messages[clicked++%messages.length];if(reduced)return;const rect=e.target.getBoundingClientRect();for(let i=0;i<28;i++){const h=document.createElement('span');h.className='spark';h.textContent=['♥','💗','💕','♡'][i%4];h.style.left=(rect.left+rect.width/2)+'px';h.style.top=rect.top+'px';h.style.setProperty('--x',(Math.random()*520-260)+'px');h.style.setProperty('--y',(Math.random()*-370-45)+'px');h.style.setProperty('--r',(Math.random()*260-130)+'deg');document.body.append(h);setTimeout(()=>h.remove(),1800)}});
+})();
+</script>
+</body></html>
